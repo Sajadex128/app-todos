@@ -1,86 +1,111 @@
-# WoodCrafters
+# وودکرفترز
 
-A premium custom woodworking website: bespoke furniture, tailored interiors,
-renovation joinery and furniture restoration.
+وب‌سایت چوب‌کاری سفارشی: مبلمان اختصاصی، دکوراسیون داخلی، نجاری بازسازی و
+مرمت مبلمان.
 
-Single-page **Vite + React 19** site with **Tailwind CSS 4**. No backend: the
-quote request form composes a complete email for the visitor to send (see
-[Connecting quote delivery](#connecting-quote-delivery)).
+سایت تک‌صفحه‌ای با **Vite + React 19** و **Tailwind CSS 4**. بدون بک‌اند: فرم
+درخواست قیمت یک ایمیل کامل برای بازدیدکننده می‌سازد تا خودش آن را ارسال کند
+(بخش [اتصال ارسال درخواست قیمت](#اتصال-ارسال-درخواست-قیمت)).
 
-## Running it
+## اجرا
 
-```bash
-docker compose -f docker-compose.base44.yml up -d --build
-```
+در محیط Base44 اپ با Docker Compose اجرا می‌شود؛ فایل
+`docker-compose.base44.yml` در مخزن محیط نگهداری می‌شود (بیرون از این مخزن) و
+کد برنامه از همین مخزن به‌صورت زنده داخل کانتینر سوار می‌شود.
 
-The dev server is published on **http://localhost:3000** and reloads as you edit
-(source is bind-mounted; `node_modules` is installed from `package-lock.json`
-into a named volume on startup).
-
-Without Docker:
+بدون Docker:
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Useful checks: `npm run lint`, `npm run build`.
+سرور توسعه روی **http://localhost:3000** در دسترس است و با هر ویرایش، خودش را
+دوباره بارگذاری می‌کند.
 
-## Structure
+بررسی‌های مفید: `npm run lint`، `npm run build`.
 
-| Path | What lives there |
+## ساختار
+
+| مسیر | چه چیزی آنجاست |
 | --- | --- |
-| `src/config/site.js` | Contact details, navigation, anniversary seal, quote-form options |
-| `src/data/*.js` | Services, feature cards, projects, process, benefits, testimonials, FAQs |
-| `src/components/sections/` | One file per page section |
-| `src/components/layout/` | Header, footer, back-to-top |
-| `src/components/quote/` | Quote context, form, dialog |
-| `src/components/ui/` | Reusable primitives: Photo, Icon, Button, Modal, Reveal, headings |
-| `src/index.css` | Design tokens (palette, type, radii, shadows) + base/component styles |
+| `src/config/site.js` | اطلاعات تماس، منو، نشان سالگرد، گزینه‌های فرم درخواست قیمت |
+| `src/data/*.js` | خدمات، کارت‌های ویژگی، پروژه‌ها، مراحل کار، مزیت‌ها، نظرات، پرسش‌های پرتکرار |
+| `src/components/sections/` | برای هر بخش صفحه یک فایل |
+| `src/components/layout/` | هدر، پانویس، بازگشت به بالا |
+| `src/components/quote/` | کانتکست، فرم و دیالوگ درخواست قیمت |
+| `src/components/ui/` | اجزای مشترک: Photo، Icon، Button، Modal، Reveal و عنوان بخش‌ها |
+| `src/utils/format.js` | تبدیل عدد‌ها به رقم‌های فارسی و سال شمسی |
+| `src/index.css` | توکن‌های طراحی (پالت، تایپوگرافی، شعاع گوشه‌ها، سایه‌ها) + استایل‌های پایه |
 
-Images are referenced by photo id (`image: { id: 1234, alt: "…" }`) and rendered
-through `src/components/ui/Photo.jsx`, which builds the responsive `srcset`.
-Swap a picture by changing the id, and always update the alt text with it.
+تصاویر با شناسه‌ی عکس (`image: { id: 1234, alt: "…" }`) تعریف و از طریق
+`src/components/ui/Photo.jsx` رندر می‌شوند که `srcset` واکنش‌گرا را می‌سازد.
+برای تغییر عکس فقط شناسه را عوض کنید و متن جانشین (alt) را هم به‌روزرسانی
+کنید.
 
-## Before you launch
+## فارسی‌سازی و چیدمان راست‌به‌چپ
 
-Everything below is deliberate sample content or a placeholder, and is labelled
-as such in the UI:
+سایت به‌صورت کامل فارسی و راست‌به‌چپ عرضه می‌شود. اگر متن یا چیدمانی را
+تغییر دادید، این نکته‌ها را در نظر بگیرید:
 
-1. **Contact details** (`src/config/site.js`) — the email address is a
-   `.example` placeholder. Fill in the real inbox, and add phone, address and
-   opening hours if you want them shown (empty values hide the row rather than
-   inventing one).
-2. **Quote delivery** — see below.
-3. **Projects** (`src/data/projects.js`) — six sample entries used to
-   demonstrate the gallery/filters.
-4. **Testimonials** (`src/data/testimonials.js`) — illustrative placeholders.
-   Not verified reviews; there are no star ratings.
-5. **Anniversary seal** (`site.anniversary`) — brand content, not a claim about
-   how long the business has traded. Update or remove it.
-6. **Budgets** (`site.quoteBudgets`) — indicative ranges shown as a dropdown
-   choice, never presented as official pricing.
+- `<html lang="fa" dir="rtl">` در `index.html` جهت کل سند را تعیین می‌کند.
+- قلم‌ها: **Vazirmatn** برای متن و **Markazi Text** برای تیترها (در
+  `src/index.css` به‌صورت `--font-sans` و `--font-serif` تعریف شده‌اند).
+- فاصله‌ی حروف (`letter-spacing`) روی متن فارسی اعمال **نمی‌شود**؛ چون خط فارسی
+  پیوسته است و فاصله‌ی حروف اتصال حروف را می‌شکند.
+- برای جهت‌دارها از کلاس‌های منطقی Tailwind (`start-*`، `end-*`، `ps-*`،
+  `pe-*`، `text-start`) استفاده شده است، نه `left/right`. اگر چیدمان را عوض
+  می‌کنید، همین کلاس‌ها را نگه دارید تا در RTL هم درست بماند.
+- فلش‌های جهت‌دار در RTL آینه می‌شوند: کلاس `icon-flip` (تعریف‌شده در
+  `src/index.css`) روی آیکون `arrow-right` قرار می‌گیرد تا به سمت چپ اشاره کند.
+- عددهایی که کاربر می‌بیند با رقم‌های فارسی نمایش داده می‌شوند
+  (`faNumber` و `faYear` در `src/utils/format.js`).
+- گرادیان پوشش قهرمان صفحه (`scrim-hero`) برای RTL آینه شده است تا متن روی
+  تیرگی بنشیند.
 
-## Connecting quote delivery
+## پیش از انتشار
 
-The form is fully validated and accessible, but this build has **no form
-backend**, so nothing is stored or transmitted by the site itself. On a valid
-submit it composes the whole request and hands it to the visitor's email
-application, and says so plainly.
+همه‌ی موارد زیر عمداً محتوای نمونه یا جایگزین هستند و در رابط کاربری هم همین
+طور برچسب‌گذاری شده‌اند:
 
-To deliver submissions automatically, either point the form at a form service
-(Formspree/Netlify Forms/Basin and similar) or add a serverless/API endpoint,
-and POST the same field values from `QuoteForm.handleSubmit`. Keep validation
-and the error/success states as they are, and delete the "nothing is
-transmitted" note once delivery really works.
+1. **اطلاعات تماس** (`src/config/site.js`) — نشانی ایمیل یک جایگزین
+   `.example` است. ایمیل واقعی را وارد کنید و در صورت تمایل تلفن، آدرس و ساعات
+   کاری را هم اضافه کنید (مقدار خالی، آن سطر را پنهان می‌کند و هیچ اطلاعاتی
+   اختراع نمی‌شود).
+2. **ارسال درخواست قیمت** — بخش بعدی را ببینید.
+3. **پروژه‌ها** (`src/data/projects.js`) — شش نمونه برای نشان دادن گالری و
+   فیلترها.
+4. **نظرات مشتریان** (`src/data/testimonials.js`) — نمونه‌های توضیحی، نه نظر
+   تأییدشده؛ هیچ امتیاز ستاره‌ای نمایش داده نمی‌شود.
+5. **نشان سالگرد** (`site.anniversary`) — محتوای برند است، نه ادعایی درباره‌ی
+   سابقه‌ی فعالیت کسب‌وکار. آن را به‌روزرسانی یا حذف کنید.
+6. **بودجه‌ها** (`site.quoteBudgets`) — محدوده‌های تقریبی در قالب یک فهرست
+   کشویی؛ هرگز به‌عنوان قیمت رسمی ارائه نمی‌شوند.
 
-## Accessibility and performance notes
+## اتصال ارسال درخواست قیمت
 
-- Semantic landmarks, one `h1`, ordered headings, skip link, visible focus rings.
-- Dialogs (quote form, project lightbox) trap focus, close on Escape/backdrop
-  and restore focus to the control that opened them.
-- The FAQ accordion uses real buttons with `aria-expanded`/`aria-controls`.
-- Portfolio filters expose `aria-pressed`; the result count is announced.
-- `prefers-reduced-motion` disables reveals, hover lifts and smooth scrolling.
-- Images are lazy-loaded below the fold, the hero is `fetchpriority="high"`,
-  and every image container reserves its aspect ratio to avoid layout shift.
+فرم کاملاً اعتبارسنجی‌شده و دسترس‌پذیر است، اما این نسخه **بک‌اند فرم ندارد**؛
+پس هیچ چیزی توسط خود سایت ذخیره یا ارسال نمی‌شود. در ارسال معتبر، کل درخواست
+ساخته و به برنامه‌ی ایمیل بازدیدکننده سپرده می‌شود و همین موضوع هم صریح به
+کاربر گفته می‌شود.
+
+برای ارسال خودکار، یا فرم را به یک سرویس فرم (Formspree، Netlify Forms، Basin و
+مانند آن) وصل کنید یا یک نقطه‌ی پایانی API بسازید و همان مقادیر فیلدها را از
+`QuoteForm.handleSubmit` به آن POST کنید. اعتبارسنجی و حالت‌های خطا/موفقیت را
+همان‌طور که هستند نگه دارید و پس از این‌که ارسال واقعاً کار کرد، یادداشت «هیچ
+چیزی ارسال نمی‌شود» را حذف کنید.
+
+## دسترس‌پذیری و کارایی
+
+- لندمارک‌های معنایی، یک `h1`، ترتیب درست تیترها، لینک پرش به محتوا و
+  نمایان‌بودن حلقه‌ی فوکوس.
+- دیالوگ‌ها (فرم درخواست قیمت و نمایش بزرگ پروژه) فوکوس را نگه می‌دارند، با
+  Escape یا کلیک بیرون بسته می‌شوند و فوکوس را به کنترل بازکننده برمی‌گردانند.
+- آکاردئون پرسش‌های پرتکرار از دکمه‌های واقعی با `aria-expanded` و
+  `aria-controls` استفاده می‌کند.
+- فیلترهای گالری `aria-pressed` دارند و تعداد نتایج اعلام می‌شود.
+- `prefers-reduced-motion` انیمیشن‌های ظاهرشدن، بالارفتن کارت‌ها و اسکرول نرم
+  را غیرفعال می‌کند.
+- تصاویر پایین صفحه به‌صورت lazy بارگذاری می‌شوند، تصویر قهرمان صفحه
+  `fetchpriority="high"` دارد و هر ظرف تصویر نسبت ابعاد خودش را رزرو می‌کند تا
+  جابه‌جایی چیدمان رخ ندهد.

@@ -20,9 +20,9 @@ export default function FaqAccordion() {
       <div className="wrap grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <SectionHeading
           id="faq-heading"
-          eyebrow="Good to Know"
-          title="Frequently Asked Questions"
-          intro="Still unsure about something? Ask us directly in the quote form — we would rather answer early than guess."
+          eyebrow="خوب است بدانید"
+          title="پرسش‌های پرتکرار"
+          intro="هنوز ابهامی دارید؟ در فرم درخواست قیمت مستقیم بپرسید — ترجیح می‌دهیم زود پاسخ دهیم تا این‌که حدس بزنیم."
         />
 
         <ul className="divide-y divide-line border-y border-line">
@@ -37,7 +37,7 @@ export default function FaqAccordion() {
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${faq.id}`}
                     onClick={() => setOpenId(isOpen ? null : faq.id)}
-                    className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                    className="flex w-full items-center justify-between gap-4 py-5 text-start"
                   >
                     <span className="font-serif text-[1.08rem] leading-snug text-ink">
                       {faq.question}
@@ -56,7 +56,7 @@ export default function FaqAccordion() {
                   role="region"
                   aria-labelledby={`faq-button-${faq.id}`}
                   hidden={!isOpen}
-                  className="pb-5 pr-10 text-[0.95rem]"
+                  className="pb-5 pe-10 text-[0.95rem]"
                 >
                   {faq.answer}
                 </div>

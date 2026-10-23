@@ -86,7 +86,7 @@ export default function Header() {
           <Logo tone="light" />
         </a>
 
-        <nav aria-label="Main navigation" className="hidden lg:block">
+        <nav aria-label="ناوبری اصلی" className="hidden lg:block">
           <ul className="flex items-center gap-7">
             {site.navigation.map((item) => {
               const id = item.href.replace("#", "");
@@ -117,8 +117,8 @@ export default function Header() {
             onClick={() => openQuote()}
             className="whitespace-nowrap"
           >
-            <span className="hidden sm:inline">Request a Quote</span>
-            <span className="sm:hidden">Quote</span>
+            <span className="hidden sm:inline">درخواست قیمت</span>
+            <span className="sm:hidden">قیمت</span>
           </Button>
           <button
             ref={toggleRef}
@@ -126,7 +126,7 @@ export default function Header() {
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
-            aria-label={menuOpen ? "Close the menu" : "Open the menu"}
+            aria-label={menuOpen ? "بستن منو" : "باز کردن منو"}
             className="grid h-11 w-11 place-items-center rounded-lg border border-cream/25 text-cream transition-colors duration-200 hover:border-amber hover:text-amber lg:hidden"
           >
             <Icon name={menuOpen ? "close" : "menu"} size={22} />
@@ -139,7 +139,7 @@ export default function Header() {
           id="mobile-navigation"
           className="border-t border-cream/10 bg-walnut/98 lg:hidden"
         >
-          <nav aria-label="Mobile navigation" className="wrap pb-6 pt-2">
+          <nav aria-label="ناوبری موبایل" className="wrap pb-6 pt-2">
             <ul>
               {site.navigation.map((item) => (
                 <li key={item.href}>
@@ -162,7 +162,7 @@ export default function Header() {
                 openQuote();
               }}
             >
-              Request a Quote
+              درخواست قیمت
             </Button>
           </nav>
         </div>

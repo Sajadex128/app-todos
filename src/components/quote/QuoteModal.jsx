@@ -18,19 +18,19 @@ export default function QuoteModal() {
       <div className="card overflow-hidden">
         <div className="flex items-start justify-between gap-4 bg-espresso px-5 py-4 text-cream sm:px-6">
           <div>
-            <p className="eyebrow text-amber">Request a Quote</p>
+            <p className="eyebrow text-amber">درخواست قیمت</p>
             <p
               id="quote-modal-title"
               className="mt-1 font-serif text-lg text-cream"
             >
-              Tell us about your project
+              درباره‌ی پروژه‌تان بگویید
             </p>
           </div>
           <Button
             variant="light"
             size="sm"
             onClick={closeQuote}
-            aria-label="Close the quote request form"
+            aria-label="بستن فرم درخواست قیمت"
             className="shrink-0"
           >
             <Icon name="close" size={18} />
@@ -41,7 +41,7 @@ export default function QuoteModal() {
           <QuoteForm
             idPrefix="quote-modal"
             preselectedService={service}
-            heading="Your project details"
+            heading="جزئیات پروژه‌ی شما"
           />
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { projectFilters, projects } from "../../data/projects";
+import { faNumber } from "../../utils/format";
 import Button from "../ui/Button";
 import Icon from "../ui/Icon";
 import Modal from "../ui/Modal";
@@ -11,8 +12,8 @@ import SectionHeading from "../ui/SectionHeading";
 function ProjectLightbox({ project, onClose, onStep, position }) {
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === "ArrowRight") onStep(1);
-      if (event.key === "ArrowLeft") onStep(-1);
+      if (event.key === "ArrowRight") onStep(-1);
+      if (event.key === "ArrowLeft") onStep(1);
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
@@ -38,8 +39,8 @@ function ProjectLightbox({ project, onClose, onStep, position }) {
             variant="dark"
             size="sm"
             onClick={onClose}
-            aria-label="Close the project details"
-            className="absolute right-3 top-3 border-cream/30 bg-walnut/85"
+            aria-label="بستن جزئیات پروژه"
+            className="absolute end-3 top-3 border-cream/30 bg-walnut/85"
             data-autofocus
           >
             <Icon name="close" size={18} />
@@ -62,23 +63,24 @@ function ProjectLightbox({ project, onClose, onStep, position }) {
                 variant="outline"
                 size="sm"
                 onClick={() => onStep(-1)}
-                aria-label="Previous project"
+                aria-label="پروژه‌ی قبلی"
               >
-                <Icon name="arrow-right" size={16} className="rotate-180" />
-                Previous
+                <Icon name="arrow-right" size={16} />
+                قبلی
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => onStep(1)}
-                aria-label="Next project"
+                aria-label="پروژه‌ی بعدی"
               >
-                Next
-                <Icon name="arrow-right" size={16} />
+                بعدی
+                <Icon name="arrow-right" size={16} className="rotate-180" />
               </Button>
             </div>
             <p className="text-xs text-muted">
-              Project {position.current} of {position.total} · sample entry
+              پروژه {faNumber(position.current)} از {faNumber(position.total)} ·
+              نمونه
             </p>
           </div>
         </div>
@@ -121,15 +123,15 @@ export default function Portfolio() {
       <div className="wrap">
         <SectionHeading
           id="projects-heading"
-          eyebrow="Portfolio"
-          title="Selected Projects"
-          intro="A closer look at the details, materials, and craftsmanship behind our work."
+          eyebrow="نمونه‌کارها"
+          title="پروژه‌های منتخب"
+          intro="نگاهی نزدیک‌تر به جزئیات، متریال و مهارتی که پشت کارهای ماست."
         />
 
         <div
           className="mt-8 flex flex-wrap gap-2.5"
           role="group"
-          aria-label="Filter projects by category"
+          aria-label="فیلتر پروژه‌ها بر اساس دسته‌بندی"
         >
           {projectFilters.map((filter) => {
             const isActive = activeFilter === filter.id;
@@ -155,7 +157,7 @@ export default function Portfolio() {
         </div>
 
         <p className="sr-only" role="status" aria-live="polite">
-          {visibleProjects.length} projects shown.
+          {faNumber(visibleProjects.length)} پروژه نمایش داده شد.
         </p>
 
         <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -169,7 +171,7 @@ export default function Portfolio() {
               <button
                 type="button"
                 onClick={() => setOpenProjectId(project.id)}
-                className="card group block h-full w-full overflow-hidden text-left transition-shadow duration-300 hover:shadow-lift"
+                className="card group block h-full w-full overflow-hidden text-start transition-shadow duration-300 hover:shadow-lift"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-line">
                   <Photo
@@ -179,19 +181,19 @@ export default function Portfolio() {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
                   />
                   <span className="absolute inset-0 bg-walnut/0 transition-colors duration-300 group-hover:bg-walnut/25" />
-                  <span className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center rounded-full bg-cream/90 text-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                    <Icon name="arrow-right" size={16} />
+                  <span className="absolute bottom-3 end-3 grid h-9 w-9 place-items-center rounded-full bg-cream/90 text-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                    <Icon name="arrow-right" size={16} className="icon-flip" />
                   </span>
                 </div>
                 <span className="block p-5">
-                  <span className="eyebrow text-[0.68rem]">
+                  <span className="eyebrow text-[0.72rem]">
                     {project.categoryLabel}
                   </span>
                   <span className="mt-1.5 block font-serif text-[1.15rem] text-ink">
                     {project.title}
                   </span>
                   <span className="mt-1.5 block text-[0.88rem] text-muted">
-                    View project details
+                    مشاهده‌ی جزئیات پروژه
                   </span>
                 </span>
               </button>
@@ -200,8 +202,8 @@ export default function Portfolio() {
         </ul>
 
         <p className="mt-8 text-sm text-muted">
-          The projects shown are sample entries used to demonstrate the layout.
-          Replace them with real completed work before publishing.
+          پروژه‌های نمایش‌داده‌شده نمونه هستند و برای نشان دادن چیدمان گالری
+          آمده‌اند. پیش از انتشار، آن‌ها را با کارهای واقعی جایگزین کنید.
         </p>
       </div>
 

@@ -22,11 +22,11 @@
   --color-cream: #fff8f0;
   --color-line: #e8d9cc;
 
-  /* Typography */
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia,
-    "Times New Roman", serif;
+  /* Typography — Persian-first: Vazirmatn for copy, Markazi Text for headings */
+  --font-sans: "Vazirmatn", "Segoe UI", Tahoma, ui-sans-serif, system-ui,
+    -apple-system, Arial, sans-serif;
+  --font-serif: "Markazi Text", "Vazirmatn", "Noto Naskh Arabic", Georgia,
+    serif;
 
   /* Geometry */
   --radius-card: 8px;
@@ -51,7 +51,7 @@
     background-color: var(--color-ivory);
     color: var(--color-muted);
     font-family: var(--font-sans);
-    line-height: 1.7;
+    line-height: 1.8;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -63,7 +63,8 @@
   h5 {
     font-family: var(--font-serif);
     color: var(--color-ink);
-    line-height: 1.1;
+    /* Persian ascenders/descenders need more room than a Latin display face. */
+    line-height: 1.35;
     text-wrap: balance;
   }
 
@@ -120,11 +121,16 @@
   .eyebrow {
     display: inline-block;
     font-family: var(--font-sans);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
+    /* Persian is a connected script: letter-spacing would break the joins. */
+    letter-spacing: normal;
     color: var(--color-burnt);
+  }
+
+  /* Directional glyphs (arrows) mirror in the right-to-left layout. */
+  [dir="rtl"] .icon-flip {
+    transform: scaleX(-1);
   }
 
   .lede {
@@ -260,8 +266,9 @@
 
   /* -------------------------------------------------------- hero + scrims */
   .scrim-hero {
+    /* Mirrored for RTL: the headline sits on the right, so the scrim darkens there. */
     background-image: linear-gradient(
-        100deg,
+        260deg,
         rgb(50 23 15 / 0.94) 0%,
         rgb(50 23 15 / 0.82) 34%,
         rgb(50 23 15 / 0.42) 68%,

@@ -21,10 +21,10 @@ export default function AnniversaryBadge({ className = "" }) {
         <span className="block font-serif text-[2.5rem] leading-none text-cream lg:text-[2.75rem]">
           {number}
         </span>
-        <span className="mt-1 block text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-cream/95">
+        <span className="mt-1 block text-[0.72rem] font-semibold text-cream/95">
           {unit}
         </span>
-        <span className="mt-1 block text-[0.52rem] uppercase tracking-[0.18em] text-cream/75">
+        <span className="mt-1 block text-[0.58rem] text-cream/75">
           {caption}
         </span>
       </span>

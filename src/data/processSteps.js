@@ -1,30 +1,29 @@
 /** The four-step process timeline. */
 export const processSteps = [
   {
-    step: "01",
+    step: "۰۱",
     icon: "chat",
-    title: "Consultation",
-    description: "Tell us about your space, ideas, and practical requirements.",
+    title: "مشاوره",
+    description: "از فضای خود، ایده‌ها و نیازهای واقعی‌تان برای ما بگویید.",
   },
   {
-    step: "02",
+    step: "۰۲",
     icon: "blueprint",
-    title: "Design & Planning",
-    description:
-      "We discuss the concept, dimensions, materials, and project scope.",
+    title: "طراحی و برنامه‌ریزی",
+    description: "درباره‌ی طرح، ابعاد، متریال و دامنه‌ی پروژه گفت‌وگو می‌کنیم.",
   },
   {
-    step: "03",
+    step: "۰۳",
     icon: "craft",
-    title: "Craftsmanship",
+    title: "ساخت و استادکاری",
     description:
-      "Our workshop turns the agreed plan into carefully crafted woodwork.",
+      "کارگاه ما طرح مورد توافق را به چوب‌کاری دقیق و ماندگار تبدیل می‌کند.",
   },
   {
-    step: "04",
+    step: "۰۴",
     icon: "house-check",
-    title: "Installation & Handover",
+    title: "نصب و تحویل",
     description:
-      "We complete the final details and ensure the finished work meets expectations.",
+      "جزئیات نهایی را کامل می‌کنیم و از مطابقت کار با انتظار شما مطمئن می‌شویم.",
   },
 ];

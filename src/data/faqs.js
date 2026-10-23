@@ -6,44 +6,44 @@
 export const faqs = [
   {
     id: "quote",
-    question: "How do I request a quote?",
+    question: "چگونه می‌توانم درخواست قیمت بدهم؟",
     answer:
-      "Use the quote request form on this page and tell us as much as you can about the project. If you would rather talk it through first, the contact details in the footer go straight to the studio.",
+      "از فرم درخواست قیمت در همین صفحه استفاده کنید و تا حد امکان درباره‌ی پروژه توضیح دهید. اگر ترجیح می‌دهید اول گفت‌وگو کنید، اطلاعات تماس در پایین صفحه مستقیم به کارگاه می‌رسد.",
   },
   {
     id: "custom",
-    question: "Can you create completely custom furniture?",
+    question: "آیا مبلمان کاملاً سفارشی هم می‌سازید؟",
     answer:
-      "Yes. Most of our work is drawn from scratch around a specific space, a specific use, and the timber you choose. We will tell you honestly if a simpler approach would serve you better.",
+      "بله. بیشتر کارهای ما از ابتدا و بر پایه‌ی یک فضای مشخص، یک کاربرد مشخص و چوبی که خودتان انتخاب می‌کنید طراحی می‌شود. اگر راه ساده‌تری بهتر جواب بدهد، صادقانه به شما می‌گوییم.",
   },
   {
     id: "materials",
-    question: "What types of wood and finishes do you offer?",
+    question: "از چه چوب‌ها و پرداخت‌هایی استفاده می‌کنید؟",
     answer:
-      "We work with a range of solid timbers and sheet materials, and we discuss finish options during planning. The right choice depends on the piece, the light in the room and how much wear it needs to take.",
+      "با طیفی از چوب‌های یکپارچه و مواد صفحه‌ای کار می‌کنیم و در مرحله‌ی برنامه‌ریزی درباره‌ی گزینه‌های پرداخت صحبت می‌کنیم. انتخاب درست به خود قطعه، نور فضا و میزان استفاده‌ی روزمره بستگی دارد.",
   },
   {
     id: "timeline",
-    question: "How long does a typical project take?",
+    question: "یک پروژه‌ی معمول چقدر زمان می‌برد؟",
     answer:
-      "Timing depends on the size and complexity of the work, workshop capacity, and lead times from suppliers. You will receive an estimated schedule with your quote, and we will tell you early if anything changes.",
+      "زمان کار به اندازه و پیچیدگی پروژه، ظرفیت کارگاه و زمان تأمین متریال بستگی دارد. برنامه‌ی زمانی برآوردی همراه با قیمت به شما داده می‌شود و اگر چیزی تغییر کند، زودتر از موعد خبر می‌دهیم.",
   },
   {
     id: "restoration",
-    question: "Do you repair or restore existing furniture?",
+    question: "مبلمان موجود را هم تعمیر یا مرمت می‌کنید؟",
     answer:
-      "Yes. We assess the piece first and explain what is realistically achievable, then carry out repairs and finishing work that respect its age and character.",
+      "بله. ابتدا قطعه را بررسی می‌کنیم و توضیح می‌دهیم چه چیزی واقع‌بینانه شدنی است؛ سپس تعمیر و پرداخت را به‌گونه‌ای انجام می‌دهیم که به سن و اصالت قطعه احترام بگذارد.",
   },
   {
     id: "installation",
-    question: "Do you offer installation?",
+    question: "نصب هم انجام می‌دهید؟",
     answer:
-      "Fitted work such as cabinetry and interior joinery is installed as part of the agreed scope, and we confirm the details before work starts.",
+      "کارهای نصب‌شونده مانند کابینت و نجاری داخلی بخشی از دامنه‌ی توافق‌شده است و پیش از شروع کار، جزئیات آن را نهایی می‌کنیم.",
   },
   {
     id: "prepare",
-    question: "What information should I provide before a consultation?",
+    question: "پیش از مشاوره چه اطلاعاتی آماده کنم؟",
     answer:
-      "Rough dimensions and photographs of the space help a great deal, along with a note of how you want to use it, any materials you like, your rough budget range, and when you would like the work done.",
+      "اندازه‌های تقریبی و چند عکس از فضا بسیار کمک‌کننده است؛ همچنین این‌که می‌خواهید چطور از آن استفاده کنید، متریال مورد علاقه‌تان، محدوده‌ی تقریبی بودجه و زمانی که برای انجام کار در نظر دارید.",
   },
 ];

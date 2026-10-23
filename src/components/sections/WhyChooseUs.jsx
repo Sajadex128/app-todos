@@ -13,8 +13,8 @@ export default function WhyChooseUs() {
       <div className="wrap">
         <SectionHeading
           id="why-heading"
-          eyebrow="Why WoodCrafters"
-          title="The Difference Is in the Details"
+          eyebrow="چرا وودکرفترز"
+          title="تفاوت در جزئیات است"
           align="center"
         />
 

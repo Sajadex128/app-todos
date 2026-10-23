@@ -17,9 +17,9 @@ export default function ProcessSteps() {
       <div className="wrap">
         <SectionHeading
           id="process-heading"
-          eyebrow="Our Process"
-          title="From First Idea to Final Finish"
-          intro="Four straightforward stages, so you always know what happens next."
+          eyebrow="مراحل کار"
+          title="از ایده‌ی اولیه تا پرداخت نهایی"
+          intro="چهار مرحله‌ی روشن، تا همیشه بدانید قدم بعدی چیست."
         />
 
         <div className="relative mt-12">
@@ -33,7 +33,7 @@ export default function ProcessSteps() {
                 <span className="grid h-14 w-14 place-items-center rounded-full border border-line bg-cardbg text-burnt shadow-card">
                   <Icon name={step.icon} size={26} strokeWidth={1.4} />
                 </span>
-                <p className="mt-4 font-serif text-[0.95rem] tracking-[0.22em] text-terracotta">
+                <p className="mt-4 font-serif text-[1.05rem] text-terracotta">
                   {step.step}
                 </p>
                 <h3 className="mt-1.5 font-serif text-[1.25rem]">

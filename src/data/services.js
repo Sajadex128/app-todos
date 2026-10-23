@@ -11,35 +11,35 @@ import { site } from "../config/site";
 export const services = [
   {
     id: "tailored-interiors",
-    title: "Tailored Interiors",
-    quoteService: "Tailored Interiors",
+    title: "دکوراسیون داخلی سفارشی",
+    quoteService: "دکوراسیون داخلی سفارشی",
     description:
-      "Transform your space with bespoke woodwork, custom cabinetry, and beautifully considered interior details.",
+      "با چوب‌کاری سفارشی، کابینت‌های اختصاصی و جزئیات سنجیده‌ی داخلی، فضای خود را دگرگون کنید.",
     image: {
       id: 3847582,
-      alt: "Warm, contemporary home office with a custom wooden desk and shelving",
+      alt: "دفتر کار خانگی گرم و امروزی با میز و قفسه‌های چوبی سفارشی",
     },
   },
   {
     id: "unique-furniture-projects",
-    title: "Unique Furniture Projects",
-    quoteService: "Unique Furniture Projects",
+    title: "پروژه‌های مبلمان خاص",
+    quoteService: "پروژه‌های مبلمان خاص",
     description:
-      "Bring your ideas to life with one-of-a-kind furniture designed, built, and finished specifically for you.",
+      "ایده‌های شما را به واقعیت تبدیل می‌کنیم؛ مبلمانی یکتا که فقط برای شما طراحی، ساخته و پرداخت می‌شود.",
     image: {
       id: 5974285,
-      alt: "Craftsperson cutting a joint into a wooden board with a chisel at the workbench",
+      alt: "استادکار در حال برش اتصال چوبی روی تخته با قلم در کارگاه",
     },
   },
   {
     id: "expert-repairs-restoration",
-    title: "Expert Repairs & Restoration",
-    quoteService: "Repairs & Restoration",
+    title: "تعمیر و مرمت تخصصی",
+    quoteService: "تعمیر و مرمت",
     description:
-      "Restore the beauty and character of treasured wooden furniture with careful repairs and expert finishing.",
+      "زیبایی و اصالت مبلمان چوبی قدیمی را با تعمیر دقیق و پرداخت استادانه به آن بازگردانید.",
     image: {
       id: 5711903,
-      alt: "Hand plane and joinery tools resting on a plank in a workshop",
+      alt: "رنده‌ی دستی و ابزارهای نجاری روی تخته‌چوبی در کارگاه",
     },
   },
 ];

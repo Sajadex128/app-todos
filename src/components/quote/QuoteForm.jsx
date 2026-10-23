@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { site } from "../../config/site";
+import { faNumber } from "../../utils/format";
 import Button from "../ui/Button";
 import Icon from "../ui/Icon";
 
@@ -20,20 +21,20 @@ const emptyValues = (service) => ({
 function validate(values) {
   const errors = {};
   if (!values.name.trim()) {
-    errors.name = "Please tell us your name.";
+    errors.name = "لطفاً نام خود را وارد کنید.";
   }
   if (!values.email.trim()) {
-    errors.email = "Please add an email address so we can reply.";
+    errors.email = "برای پاسخ دادن، نشانی ایمیل‌تان را وارد کنید.";
   } else if (!EMAIL_PATTERN.test(values.email.trim())) {
-    errors.email = "That email address looks incomplete — please check it.";
+    errors.email = "این نشانی ایمیل کامل به نظر نمی‌رسد — لطفاً بررسی کنید.";
   }
   if (!values.service) {
-    errors.service = "Please choose the service you need.";
+    errors.service = "لطفاً خدمت مورد نیاز خود را انتخاب کنید.";
   }
   if (!values.description.trim()) {
-    errors.description = "Please describe the project in a few words.";
+    errors.description = "لطفاً پروژه را در چند کلمه توضیح دهید.";
   } else if (values.description.trim().length < 20) {
-    errors.description = "A little more detail helps us quote accurately.";
+    errors.description = "توضیح کمی بیشتر به ما کمک می‌کند دقیق‌تر قیمت بدهیم.";
   }
   return errors;
 }
@@ -41,20 +42,20 @@ function validate(values) {
 /** Human-readable request, used for the email body and the copy button. */
 function buildMessage(values) {
   const rows = [
-    ["Name", values.name],
-    ["Email", values.email],
-    values.phone ? ["Phone", values.phone] : null,
-    ["Service", values.service],
-    values.budget ? ["Budget range", values.budget] : null,
-    values.contactMethod ? ["Preferred contact", values.contactMethod] : null,
-    values.timeframe ? ["Timeframe", values.timeframe] : null,
-    values.location ? ["Project location", values.location] : null,
+    ["نام", values.name],
+    ["ایمیل", values.email],
+    values.phone ? ["تلفن", values.phone] : null,
+    ["خدمت", values.service],
+    values.budget ? ["محدوده‌ی بودجه", values.budget] : null,
+    values.contactMethod ? ["روش تماس ترجیحی", values.contactMethod] : null,
+    values.timeframe ? ["بازه‌ی زمانی", values.timeframe] : null,
+    values.location ? ["محل پروژه", values.location] : null,
   ].filter(Boolean);
 
   return [
     ...rows.map(([label, value]) => `${label}: ${value}`),
     "",
-    "Project description:",
+    "توضیح پروژه:",
     values.description,
   ].join("\n");
 }
@@ -70,7 +71,7 @@ function Field({ id, label, required, error, hint, children }) {
             *
           </span>
         ) : (
-          <span className="font-normal text-muted/80"> (optional)</span>
+          <span className="font-normal text-muted/80"> (اختیاری)</span>
         )}
       </label>
       {children}
@@ -94,12 +95,12 @@ function Field({ id, label, required, error, hint, children }) {
  * Delivery: this site has no form backend connected, so the form does not
  * pretend to send anything. On a valid submit it composes the complete request
  * and hands it to the visitor's own email application — no data is stored or
- * transmitted by the site itself. See README → "Connecting quote delivery".
+ * transmitted by the site itself. See README → "اتصال ارسال درخواست قیمت".
  */
 export default function QuoteForm({
   idPrefix = "quote",
   preselectedService,
-  heading = "Request a free quote",
+  heading = "درخواست قیمت رایگان",
   className = "",
 }) {
   const [values, setValues] = useState(() => emptyValues(preselectedService));
@@ -182,11 +183,11 @@ export default function QuoteForm({
           </span>
           <div>
             <h3 className="font-serif text-xl text-ink">
-              Your request is ready to send
+              درخواست شما آماده‌ی ارسال است
             </h3>
             <p className="mt-2 text-[0.95rem]">
-              We have put your details into a complete email. Nothing has been
-              sent yet — you stay in control of the final message.
+              اطلاعات شما را در یک ایمیل کامل قرار دادیم. هنوز چیزی ارسال نشده
+              است — تصمیم نهایی با خود شماست.
             </p>
           </div>
         </div>
@@ -200,42 +201,41 @@ export default function QuoteForm({
               data-autofocus
             >
               <Icon name="mail" size={18} />
-              Open in your email app
+              باز کردن در برنامه‌ی ایمیل شما
             </Button>
           ) : null}
           <Button variant="outline" onClick={handleCopy}>
             <Icon name="copy" size={18} />
-            {copyState === "copied" ? "Details copied" : "Copy the details"}
+            {copyState === "copied" ? "جزئیات کپی شد" : "کپی جزئیات"}
           </Button>
           <Button variant="outline" onClick={handleReset}>
-            Edit the request
+            ویرایش درخواست
           </Button>
         </div>
 
         <p className="mt-3 text-sm text-muted" role="status" aria-live="polite">
           {copyState === "copied"
-            ? "The request details are on your clipboard."
+            ? "جزئیات درخواست در حافظه‌ی موقت شما کپی شد."
             : null}
           {copyState === "failed"
-            ? "Your browser blocked the clipboard — you can still select the text of the prepared email."
+            ? "مرورگر شما دسترسی به حافظه‌ی موقت را مسدود کرده — همچنان می‌توانید متن ایمیل آماده‌شده را انتخاب و کپی کنید."
             : null}
         </p>
 
         <div className="mt-5 rounded-lg border border-line bg-ivory/70 p-4 text-sm">
-          <p className="font-semibold text-ink">Before this goes live</p>
+          <p className="font-semibold text-ink">پیش از انتشار نهایی</p>
           <p className="mt-1">
-            Automatic delivery is not connected yet: this website does not store
-            submissions or email the studio by itself. The prepared message is
-            addressed to{" "}
+            ارسال خودکار هنوز متصل نیست: این وب‌سایت پاسخ‌های فرم را ذخیره
+            نمی‌کند و خودش ایمیلی به کارگاه نمی‌فرستد. پیام آماده‌شده به{" "}
             <span className="font-medium text-ink">
-              {site.contact.email || "the studio inbox"}
-            </span>
-            , which is still a placeholder in this build. Replace it in{" "}
+              {site.contact.email || "ایمیل کارگاه"}
+            </span>{" "}
+            ارسال می‌شود که در این نسخه همچنان یک نشانی نمونه است. آن را در{" "}
             <code className="rounded bg-line/60 px-1 py-0.5 text-[0.8rem] text-ink">
               src/config/site.js
             </code>{" "}
-            and connect a form service if you want submissions delivered
-            automatically (see README).
+            جایگزین کنید و برای ارسال خودکار، یک سرویس فرم متصل کنید (به فایل
+            README مراجعه کنید).
           </p>
         </div>
       </div>
@@ -246,18 +246,18 @@ export default function QuoteForm({
     <form className={className} onSubmit={handleSubmit} noValidate>
       <h3 className="font-serif text-2xl text-ink">{heading}</h3>
       <p className="mt-2 text-[0.95rem]">
-        Tell us about the project and we will come back to you with next steps.
-        Required fields are marked with{" "}
+        درباره‌ی پروژه برای ما بنویسید تا با قدم‌های بعدی به شما پاسخ دهیم.
+        فیلدهای الزامی با{" "}
         <span className="text-burnt" aria-hidden="true">
           *
-        </span>
-        .
+        </span>{" "}
+        مشخص شده‌اند.
       </p>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <Field
           id={`${idPrefix}-name`}
-          label="Full name"
+          label="نام و نام خانوادگی"
           required
           error={errors.name}
         >
@@ -277,7 +277,7 @@ export default function QuoteForm({
 
         <Field
           id={`${idPrefix}-email`}
-          label="Email address"
+          label="نشانی ایمیل"
           required
           error={errors.email}
         >
@@ -297,7 +297,11 @@ export default function QuoteForm({
           />
         </Field>
 
-        <Field id={`${idPrefix}-phone`} label="Phone number" error={errors.phone}>
+        <Field
+          id={`${idPrefix}-phone`}
+          label="شماره‌ی تلفن"
+          error={errors.phone}
+        >
           <input
             id={`${idPrefix}-phone`}
             name="phone"
@@ -311,7 +315,7 @@ export default function QuoteForm({
 
         <Field
           id={`${idPrefix}-service`}
-          label="Service type"
+          label="نوع خدمت"
           required
           error={errors.service}
         >
@@ -338,10 +342,10 @@ export default function QuoteForm({
         <div className="sm:col-span-2">
           <Field
             id={`${idPrefix}-description`}
-            label="Project description"
+            label="توضیح پروژه"
             required
             error={errors.description}
-            hint="Room dimensions, how you want to use the piece, and any materials you have in mind."
+            hint="ابعاد فضا، این‌که می‌خواهید از قطعه چطور استفاده کنید و متریالی که در ذهن دارید."
           >
             <textarea
               ref={setFieldRef("description")}
@@ -363,8 +367,8 @@ export default function QuoteForm({
 
         <Field
           id={`${idPrefix}-budget`}
-          label="Estimated budget"
-          hint="Indicative ranges only — not a quotation."
+          label="بودجه‌ی برآوردی"
+          hint="فقط محدوده‌های تقریبی — به‌معنای قیمت قطعی نیست."
         >
           <select
             id={`${idPrefix}-budget`}
@@ -373,7 +377,7 @@ export default function QuoteForm({
             value={values.budget}
             onChange={handleChange}
           >
-            <option value="">Prefer not to say</option>
+            <option value="">ترجیح می‌دهم نگویم</option>
             {site.quoteBudgets.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -382,7 +386,7 @@ export default function QuoteForm({
           </select>
         </Field>
 
-        <Field id={`${idPrefix}-contact-method`} label="Preferred contact method">
+        <Field id={`${idPrefix}-contact-method`} label="روش تماس ترجیحی">
           <select
             id={`${idPrefix}-contact-method`}
             name="contactMethod"
@@ -390,7 +394,7 @@ export default function QuoteForm({
             value={values.contactMethod}
             onChange={handleChange}
           >
-            <option value="">No preference</option>
+            <option value="">تفاوتی ندارد</option>
             {site.quoteContactMethods.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -401,7 +405,7 @@ export default function QuoteForm({
 
         <Field
           id={`${idPrefix}-timeframe`}
-          label="Preferred project timeframe"
+          label="بازه‌ی زمانی مورد نظر برای پروژه"
         >
           <select
             id={`${idPrefix}-timeframe`}
@@ -410,7 +414,7 @@ export default function QuoteForm({
             value={values.timeframe}
             onChange={handleChange}
           >
-            <option value="">Not decided yet</option>
+            <option value="">هنوز تصمیم نگرفته‌ام</option>
             {site.quoteTimeframes.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -419,14 +423,14 @@ export default function QuoteForm({
           </select>
         </Field>
 
-        <Field id={`${idPrefix}-location`} label="Project location">
+        <Field id={`${idPrefix}-location`} label="محل پروژه">
           <input
             id={`${idPrefix}-location`}
             name="location"
             type="text"
             autoComplete="address-level2"
             className="field-input"
-            placeholder="Town or area"
+            placeholder="شهر یا منطقه"
             value={values.location}
             onChange={handleChange}
           />
@@ -436,8 +440,8 @@ export default function QuoteForm({
       {errorCount > 0 ? (
         <p className="mt-4 text-sm font-medium text-[#8f2a1f]" role="alert">
           {errorCount === 1
-            ? "Please check the highlighted field."
-            : `Please check the ${errorCount} highlighted fields.`}
+            ? "لطفاً فیلد مشخص‌شده را بررسی کنید."
+            : `لطفاً ${faNumber(errorCount)} فیلد مشخص‌شده را بررسی کنید.`}
         </p>
       ) : null}
 
@@ -447,18 +451,19 @@ export default function QuoteForm({
           variant="primary"
           disabled={status === "preparing"}
         >
-          {status === "preparing" ? "Preparing your request…" : "Send request"}
-          <Icon name="arrow-right" size={18} />
+          {status === "preparing" ? "در حال آماده‌سازی درخواست…" : "ارسال درخواست"}
+          <Icon name="arrow-right" size={18} className="icon-flip" />
         </Button>
         <p className="text-xs text-muted">
-          We only use your details to answer this enquiry.
+          از اطلاعات شما فقط برای پاسخ دادن به همین درخواست استفاده می‌کنیم.
         </p>
       </div>
 
       <p className="mt-4 rounded-lg border border-line bg-ivory/70 p-3 text-xs text-muted">
-        This form prepares an email for you to send from your own email app —
-        nothing is transmitted or stored by this website yet. Reference images
-        can be attached to that email, or mentioned in your description.
+        این فرم یک ایمیل آماده می‌کند تا خودتان از برنامه‌ی ایمیل‌تان ارسال
+        کنید — هنوز هیچ اطلاعاتی توسط این وب‌سایت ارسال یا ذخیره نمی‌شود.
+        تصاویر نمونه را می‌توانید به همان ایمیل پیوست کنید یا در توضیحات به آن‌ها
+        اشاره کنید.
       </p>
     </form>
   );

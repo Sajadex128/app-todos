@@ -20,27 +20,27 @@ export default function ContactSection() {
         <div>
           <SectionHeading
             id="contact-heading"
-            eyebrow="Contact"
-            title="Tell Us About Your Project"
-            intro="Share a few details and we will come back with questions, a rough estimate and a suggested next step. There is no obligation."
+            eyebrow="تماس"
+            title="درباره‌ی پروژه‌تان بگویید"
+            intro="چند جزئیات را با ما در میان بگذارید تا با پرسش‌هایمان، یک برآورد تقریبی و پیشنهاد قدم بعدی به شما پاسخ دهیم. هیچ الزامی وجود ندارد."
           />
           <ContactDetails className="mt-8" />
 
           {usingPlaceholderEmail ? (
             <p className="mt-6 rounded-lg border border-line bg-cardbg p-4 text-sm text-muted">
               <strong className="font-semibold text-ink">
-                Studio details are placeholders.
+                اطلاعات کارگاه جایگزین نمونه است.
               </strong>{" "}
-              Update them in{" "}
-              <code className="text-ink">src/config/site.js</code> before launch
-              — phone, address and opening hours stay hidden until you fill them
-              in.
+              پیش از انتشار آن‌ها را در{" "}
+              <code className="text-ink">src/config/site.js</code> به‌روزرسانی
+              کنید — تلفن، آدرس و ساعات کاری تا زمانی که آن‌ها را پر نکنید
+              نمایش داده نمی‌شوند.
             </p>
           ) : null}
         </div>
 
         <div className="card p-6 sm:p-8">
-          <QuoteForm idPrefix="contact" heading="Request a free quote" />
+          <QuoteForm idPrefix="contact" heading="درخواست قیمت رایگان" />
         </div>
       </div>
     </section>

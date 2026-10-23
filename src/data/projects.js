@@ -6,83 +6,83 @@
  * with real completed work before publishing them as business history.
  */
 export const projectFilters = [
-  { id: "all", label: "All Projects" },
-  { id: "furniture", label: "Furniture" },
-  { id: "interiors", label: "Interiors" },
-  { id: "restoration", label: "Restoration" },
+  { id: "all", label: "همه‌ی پروژه‌ها" },
+  { id: "furniture", label: "مبلمان" },
+  { id: "interiors", label: "دکوراسیون داخلی" },
+  { id: "restoration", label: "مرمت" },
 ];
 
 export const projects = [
   {
     id: "custom-oak-cabinetry",
-    title: "Custom Oak Cabinetry",
+    title: "کابینت سفارشی بلوط",
     category: "interiors",
-    categoryLabel: "Interiors",
+    categoryLabel: "دکوراسیون داخلی",
     image: {
       id: 5502249,
-      alt: "Fitted wooden kitchen cabinetry with solid oak counters and open shelving",
+      alt: "کابینت آشپزخانه‌ی چوبی با صفحه‌ی بلوط یکپارچه و قفسه‌بندی باز",
     },
     description:
-      "Fitted cabinetry built to the room's own measurements, with solid timber worktops and hand-oiled fronts.",
+      "کابینتی که دقیقاً با اندازه‌های همان فضا ساخته شده، با صفحه‌های چوبی یکپارچه و درهای روغن‌خورده با دست.",
   },
   {
     id: "handcrafted-dining-table",
-    title: "Handcrafted Dining Table",
+    title: "میز غذاخوری دست‌ساز",
     category: "furniture",
-    categoryLabel: "Furniture",
+    categoryLabel: "مبلمان",
     image: {
       id: 7180275,
-      alt: "Solid wooden dining table laid with ceramic plates in a calm, minimal room",
+      alt: "میز غذاخوری چوبی یکپارچه با بشقاب‌های سرامیکی در فضایی آرام و ساده",
     },
     description:
-      "A solid-top dining table, jointed and finished by hand so the grain runs continuously across the surface.",
+      "میز غذاخوری با صفحه‌ی یکپارچه، اتصال‌کشی‌شده و پرداخت‌شده با دست، به‌گونه‌ای که رگه‌های چوب پیوسته در سطح ادامه پیدا کنند.",
   },
   {
     id: "restored-antique-sideboard",
-    title: "Restored Antique Sideboard",
+    title: "سایدبورد قدیمی مرمت‌شده",
     category: "restoration",
-    categoryLabel: "Restoration",
+    categoryLabel: "مرمت",
     image: {
       id: 5095274,
-      alt: "Close-up of hands restoring the carved detail of an antique wooden piece",
+      alt: "نمای نزدیک دست‌هایی که در حال مرمت نقش‌های کنده‌کاری‌شده روی یک قطعه‌ی چوبی قدیمی هستند",
     },
     description:
-      "Careful repair and re-finishing work that keeps the character of an old piece while making it usable again.",
+      "تعمیر و پرداخت دوباره با دقت، به‌گونه‌ای که اصالت قطعه‌ی قدیمی حفظ شود و باز هم قابل استفاده باشد.",
   },
   {
     id: "bespoke-oak-dining-set",
-    title: "Bespoke Oak Dining Set",
+    title: "ست غذاخوری سفارشی بلوط",
     category: "furniture",
-    categoryLabel: "Furniture",
+    categoryLabel: "مبلمان",
     image: {
       id: 6284235,
-      alt: "Oak furniture and dining table in a light contemporary kitchen and dining space",
+      alt: "مبلمان بلوط و میز غذاخوری در آشپزخانه و فضای غذاخوری روشن و امروزی",
     },
     description:
-      "A made-to-measure table and seating group, sized to the room and built from the same selection of oak.",
+      "میز و صندلی‌هایی ساخته‌شده در ابعاد فضای شما و از یک گزینش بلوط یکسان.",
   },
   {
     id: "beamed-interior-fit-out",
-    title: "Beamed Interior Fit-Out",
+    title: "چوب‌کاری داخلی با تیرهای نمایان",
     category: "interiors",
-    categoryLabel: "Interiors",
+    categoryLabel: "دکوراسیون داخلی",
     image: {
       id: 5472818,
-      alt: "Long timber dining table beneath a ceiling of massive exposed wooden beams",
+      alt: "میز غذاخوری چوبی بلند زیر سقفی از تیرهای چوبی نمایان",
     },
     description:
-      "Interior woodwork designed around existing structure, with new joinery detailed to suit the space.",
+      "چوب‌کاری داخلی‌ای که بر پایه‌ی ساختار موجود ساختمان طراحی شده، با نجاری تازه و متناسب با فضا.",
   },
   {
     id: "restoration-bench-hand-tools",
-    title: "Restoration Bench & Hand Tools",
+    title: "میز کار و ابزارهای مرمت",
     category: "restoration",
-    categoryLabel: "Restoration",
+    categoryLabel: "مرمت",
     image: {
       id: 5095285,
-      alt: "Selection of vintage woodworking tools laid out on a wooden bench",
+      alt: "مجموعه‌ای از ابزارهای نجاری قدیمی چیده‌شده روی میز کار چوبی",
     },
     description:
-      "Cleaning, sharpening and re-setting the hand tools used for restoration work on older pieces.",
+      "تمیزکاری، تیزکردن و تنظیم دوباره‌ی ابزارهای دستی‌ای که در مرمت قطعات قدیمی به کار می‌روند.",
   },
 ];

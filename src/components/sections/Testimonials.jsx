@@ -12,9 +12,9 @@ export default function Testimonials() {
       <div className="wrap">
         <SectionHeading
           id="testimonials-heading"
-          eyebrow="Clients"
-          title="What Our Clients Say"
-          intro="Illustrative placeholders that show how client feedback will read — swap them for genuine quotes before launch."
+          eyebrow="مشتریان"
+          title="مشتریان ما چه می‌گویند"
+          intro="نمونه‌هایی که نشان می‌دهد نظر مشتریان چگونه خوانده می‌شود — پیش از انتشار، آن‌ها را با نقل‌قول‌های واقعی جایگزین کنید."
           align="center"
         />
 
@@ -29,9 +29,9 @@ export default function Testimonials() {
               <figure className="card flex h-full flex-col p-7">
                 <span
                   aria-hidden="true"
-                  className="font-serif text-5xl leading-[0.6] text-terracotta"
+                  className="font-serif text-5xl leading-[0.9] text-terracotta"
                 >
-                  &ldquo;
+                  &laquo;
                 </span>
                 <blockquote className="mt-4 flex-1">
                   <p className="text-[1rem] leading-relaxed text-ink/85">
@@ -52,7 +52,7 @@ export default function Testimonials() {
         </ul>
 
         <p className="mt-8 text-center text-sm text-muted">
-          Sample testimonial content — not verified customer reviews.
+          محتوای نمونه — نظرات واقعی و تأییدشده‌ی مشتریان نیست.
         </p>
       </div>
     </section>

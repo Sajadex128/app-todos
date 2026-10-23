@@ -22,7 +22,7 @@ export default function FeatureCards() {
     >
       <div className="wrap">
         <h2 id="features-heading" className="sr-only">
-          What we can do for your home
+          ما چه کاری برای خانه‌ی شما انجام می‌دهیم
         </h2>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {features.map((feature, index) => (

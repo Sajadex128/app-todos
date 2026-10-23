@@ -20,9 +20,9 @@ export default function App() {
     <QuoteProvider>
       <a
         href="#main"
-        className="absolute left-4 top-3 z-[60] -translate-y-24 rounded-lg bg-cream px-4 py-2.5 font-semibold text-ink shadow-card transition-transform duration-200 focus:translate-y-0"
+        className="absolute start-4 top-3 z-[60] -translate-y-24 rounded-lg bg-cream px-4 py-2.5 font-semibold text-ink shadow-card transition-transform duration-200 focus:translate-y-0"
       >
-        Skip to main content
+        پرش به محتوای اصلی
       </a>
 
       <Header />

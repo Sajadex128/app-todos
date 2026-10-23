@@ -9,22 +9,22 @@ export const testimonials = [
   {
     id: "sample-1",
     quote:
-      "They took the time to understand how we actually use the room, then built something that fits it exactly.",
-    name: "Sample client",
-    project: "Fitted kitchen cabinetry",
+      "وقت گذاشتند تا بفهمند ما واقعاً چطور از این فضا استفاده می‌کنیم؛ بعد چیزی ساختند که دقیقاً اندازه‌ی همان فضا بود.",
+    name: "مشتری نمونه",
+    project: "کابینت آشپزخانه‌ی سفارشی",
   },
   {
     id: "sample-2",
     quote:
-      "The joinery details were explained to us step by step, and the finished piece feels like part of the house.",
-    name: "Sample client",
-    project: "Bespoke dining table",
+      "جزئیات نجاری مرحله‌به‌مرحله برای ما توضیح داده شد و قطعه‌ی نهایی حس بخشی از خود خانه را دارد.",
+    name: "مشتری نمونه",
+    project: "میز غذاخوری سفارشی",
   },
   {
     id: "sample-3",
     quote:
-      "An old family piece came back to us repaired, re-finished and still unmistakably itself.",
-    name: "Sample client",
-    project: "Furniture restoration",
+      "یک قطعه‌ی قدیمی خانوادگی، تعمیرشده و با پرداخت تازه به ما برگشت؛ همان قطعه‌ی آشنا، اما سالم.",
+    name: "مشتری نمونه",
+    project: "مرمت مبلمان",
   },
 ];

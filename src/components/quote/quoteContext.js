@@ -11,7 +11,7 @@ export const QuoteContext = createContext(null);
 export function useQuote() {
   const value = useContext(QuoteContext);
   if (!value) {
-    throw new Error("useQuote must be used inside <QuoteProvider>");
+    throw new Error("useQuote باید داخل <QuoteProvider> استفاده شود.");
   }
   return value;
 }

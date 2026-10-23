@@ -12,18 +12,18 @@ export default function ContactDetails({ tone = "dark", className = "" }) {
 
   const rows = [
     email
-      ? { icon: "mail", label: "Email", value: email, href: `mailto:${email}` }
+      ? { icon: "mail", label: "ایمیل", value: email, href: `mailto:${email}` }
       : null,
     phone
       ? {
           icon: "phone",
-          label: "Phone",
+          label: "تلفن",
           value: phone,
           href: `tel:${phone.replace(/\s+/g, "")}`,
         }
       : null,
-    address ? { icon: "pin", label: "Workshop", value: address } : null,
-    hours ? { icon: "clock", label: "Opening hours", value: hours } : null,
+    address ? { icon: "pin", label: "کارگاه", value: address } : null,
+    hours ? { icon: "clock", label: "ساعات کاری", value: hours } : null,
   ].filter(Boolean);
 
   return (

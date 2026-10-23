@@ -6,33 +6,33 @@ export const features = [
   {
     id: "bespoke-furniture",
     icon: "armchair",
-    title: "Bespoke Furniture",
+    title: "مبلمان سفارشی",
     description:
-      "Custom-made furniture designed around your lifestyle, space, and personal taste.",
+      "مبلمانی که بر اساس سبک زندگی، فضای شما و سلیقه‌ی شخصی‌تان ساخته می‌شود.",
     tone: "burnt",
   },
   {
     id: "home-renovation",
     icon: "house",
-    title: "Home Renovation",
+    title: "بازسازی خانه",
     description:
-      "Thoughtful woodwork and renovation solutions that bring new life to your home.",
+      "چوب‌کاری سنجیده و راهکارهای بازسازی که به خانه‌ی شما جان تازه‌ای می‌دهد.",
     tone: "espresso",
   },
   {
     id: "detailed-craftsmanship",
     icon: "craft",
-    title: "Detailed Craftsmanship",
+    title: "استادکاری دقیق",
     description:
-      "Every joint, edge, and finish is carefully considered for lasting quality.",
+      "هر اتصال، لبه و پرداخت با دقت در نظر گرفته می‌شود تا کیفیت ماندگار باشد.",
     tone: "terracotta",
   },
   {
     id: "fair-pricing",
     icon: "tag",
-    title: "Fair Pricing",
+    title: "قیمت منصفانه",
     description:
-      "Transparent estimates, clear communication, and quality workmanship without surprises.",
+      "برآورد شفاف، گفت‌وگوی روشن و کیفیت ساخت بالا، بدون هزینه‌های غافلگیرکننده.",
     tone: "espresso",
   },
 ];

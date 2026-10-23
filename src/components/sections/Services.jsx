@@ -8,7 +8,7 @@ import SectionHeading from "../ui/SectionHeading";
 
 /**
  * Three photographic service cards on warm ivory, with the anniversary seal
- * layered over the lower-right corner.
+ * layered over the lower-left corner (lower-right in the mirrored RTL layout).
  */
 export default function Services() {
   const { openQuote } = useQuote();
@@ -22,9 +22,9 @@ export default function Services() {
       <div className="wrap relative">
         <SectionHeading
           id="services-heading"
-          title="Our Services"
+          title="خدمات ما"
           align="center"
-          className="[&>h2]:text-[1.6rem] [&>h2]:uppercase [&>h2]:tracking-[0.16em] sm:[&>h2]:text-[1.9rem]"
+          className="[&>h2]:text-[1.6rem] sm:[&>h2]:text-[1.9rem]"
         />
 
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-7">
@@ -50,7 +50,7 @@ export default function Services() {
                       size="sm"
                       onClick={() => openQuote(service.quoteService)}
                     >
-                      Get Started
+                      شروع کنید
                     </Button>
                   </div>
                 </div>
@@ -60,7 +60,7 @@ export default function Services() {
         </ul>
 
         {/* Small screens: the seal sits below the cards so nothing is covered. */}
-        <AnniversaryBadge className="mx-auto mt-10 lg:absolute lg:bottom-[-2.75rem] lg:right-0 lg:z-30 lg:mt-0 lg:mr-4" />
+        <AnniversaryBadge className="mx-auto mt-10 lg:absolute lg:bottom-[-2.75rem] lg:end-0 lg:z-30 lg:mt-0 lg:me-4" />
       </div>
     </section>
   );

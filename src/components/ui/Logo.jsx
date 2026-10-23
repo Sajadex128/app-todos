@@ -2,8 +2,8 @@ import { site } from "../../config/site";
 
 /**
  * Brand mark: a thin hexagonal emblem carrying a stylised joinery "W", paired
- * with the WoodCrafters wordmark. Pure SVG + text, so it stays crisp at any
- * size and needs no image asset.
+ * with the Persian wordmark. Pure SVG + text, so it stays crisp at any size and
+ * needs no image asset.
  */
 export default function Logo({ tone = "light", className = "" }) {
   const isLight = tone === "light";
@@ -33,11 +33,11 @@ export default function Logo({ tone = "light", className = "" }) {
         />
       </svg>
       <span
-        className={`font-sans text-[1.22rem] font-semibold tracking-tight ${
+        className={`font-sans text-[1.22rem] font-semibold ${
           isLight ? "text-cream" : "text-ink"
         }`}
       >
-        Wood<span className="font-normal">Crafters</span>
+        {site.name}
         <span className="sr-only"> — {site.tagline}</span>
       </span>
     </span>

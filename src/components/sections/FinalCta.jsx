@@ -23,17 +23,17 @@ export default function FinalCta() {
           id="final-cta-heading"
           className="mx-auto max-w-2xl font-serif text-[2rem] leading-tight text-cream sm:text-[2.4rem] lg:text-[2.8rem]"
         >
-          Have a Project in Mind?
+          پروژه‌ای در ذهن دارید؟
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[1.02rem] text-oak/90">
-          Let&rsquo;s turn your ideas into beautifully crafted woodwork.
+          بیایید ایده‌های شما را به چوب‌کاری زیبا تبدیل کنیم.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button variant="primary" onClick={() => openQuote()}>
-            Request a Free Quote
+            درخواست قیمت رایگان
           </Button>
           <Button as="a" href="#contact" variant="light">
-            Contact Our Team
+            تماس با تیم ما
           </Button>
         </div>
       </div>

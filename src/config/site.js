@@ -5,12 +5,13 @@
  * contact details, navigation, the anniversary seal, and the quote-form options.
  *
  * ⚠️ The contact details below are clearly-marked PLACEHOLDERS. Replace them
- * with the real studio details before launch (see README → "Before you launch").
+ * with the real studio details before launch (see README → "پیش از انتشار").
  * Never publish a placeholder address as if it were a real one.
  */
 export const site = {
-  name: "WoodCrafters",
-  tagline: "Custom woodwork solutions crafted to perfection for your home and space.",
+  name: "وودکرفترز",
+  tagline:
+    "راهکارهای چوبی سفارشی، با دقتی استادانه برای خانه و فضای شما.",
 
   contact: {
     /** Placeholder address — replace with the studio's real inbox. */
@@ -24,53 +25,53 @@ export const site = {
   },
 
   /** Subject line used for quote-request emails. */
-  quoteSubject: "Quote request from the WoodCrafters website",
+  quoteSubject: "درخواست قیمت از وب‌سایت وودکرفترز",
 
   /**
    * Sample brand content. Update the number and labels and the seal follows.
    * (Shown as a brand mark, not as a claim about the business's history.)
    */
   anniversary: {
-    number: "20",
-    unit: "Years",
-    caption: "of craftsmanship",
+    number: "۲۰",
+    unit: "سال",
+    caption: "تجربه و مهارت",
   },
 
   navigation: [
-    { label: "Home", href: "#home" },
-    { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "خانه", href: "#home" },
+    { label: "خدمات", href: "#services" },
+    { label: "پروژه‌ها", href: "#projects" },
+    { label: "درباره ما", href: "#about" },
+    { label: "تماس", href: "#contact" },
   ],
 
   /** Quote-form service options. Keep in sync with `src/data/services.js`. */
   quoteServices: [
-    "Bespoke Furniture",
-    "Tailored Interiors",
-    "Unique Furniture Projects",
-    "Home Renovation",
-    "Repairs & Restoration",
-    "Custom Cabinetry",
-    "Other",
+    "مبلمان سفارشی",
+    "دکوراسیون داخلی سفارشی",
+    "پروژه‌های مبلمان خاص",
+    "بازسازی خانه",
+    "تعمیر و مرمت",
+    "کابینت سفارشی",
+    "موارد دیگر",
   ],
 
   /** Indicative ranges only — adjust to the studio's real pricing bands. */
   quoteBudgets: [
-    "Not sure yet",
-    "Under 2,000",
-    "2,000 – 5,000",
-    "5,000 – 12,000",
-    "12,000 – 25,000",
-    "Above 25,000",
+    "هنوز مشخص نیست",
+    "زیر ۲٬۰۰۰",
+    "۲٬۰۰۰ تا ۵٬۰۰۰",
+    "۵٬۰۰۰ تا ۱۲٬۰۰۰",
+    "۱۲٬۰۰۰ تا ۲۵٬۰۰۰",
+    "بالای ۲۵٬۰۰۰",
   ],
 
-  quoteContactMethods: ["Email", "Phone", "Either is fine"],
+  quoteContactMethods: ["ایمیل", "تلفن", "هر کدام فرقی ندارد"],
 
   quoteTimeframes: [
-    "As soon as possible",
-    "Within 1–3 months",
-    "Within 3–6 months",
-    "Flexible / still exploring",
+    "در اولین فرصت",
+    "تا ۱ تا ۳ ماه آینده",
+    "تا ۳ تا ۶ ماه آینده",
+    "انعطاف‌پذیر / در حال بررسی",
   ],
 };

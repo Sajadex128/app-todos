@@ -36,12 +36,11 @@ export default function WoodBanner() {
           id="wood-banner-heading"
           className="mx-auto max-w-3xl font-serif text-[1.9rem] leading-tight text-cream sm:text-[2.3rem] lg:text-[2.7rem]"
         >
-          Expert Woodworking Solutions for Your Home
+          راهکارهای استادانه‌ی چوب‌کاری برای خانه‌ی شما
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[1rem] text-oak/90">
-          From a single repaired chair to a full room of fitted joinery, every
-          project starts with a conversation about how you want the space to
-          work.
+          از تعمیر یک صندلی تا چوب‌کاری کامل یک اتاق، هر پروژه با گفت‌وگویی
+          درباره‌ی این‌که می‌خواهید فضا چگونه کار کند آغاز می‌شود.
         </p>
       </div>
     </section>

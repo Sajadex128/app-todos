@@ -5,9 +5,9 @@ import Reveal from "../ui/Reveal";
 import SectionHeading from "../ui/SectionHeading";
 
 const valuePoints = [
-  "Thoughtful, made-to-measure design.",
-  "Quality materials and careful finishing.",
-  "Clear communication from start to finish.",
+  "طراحی سنجیده و کاملاً سفارشی.",
+  "متریال باکیفیت و پرداخت دقیق.",
+  "گفت‌وگوی شفاف از ابتدا تا پایان کار.",
 ];
 
 export default function About() {
@@ -21,9 +21,9 @@ export default function About() {
         <Reveal className="order-2 lg:order-1">
           <SectionHeading
             id="about-heading"
-            eyebrow="About Us"
-            title="Crafted With Care. Built to Last."
-            intro="At WoodCrafters, we believe great woodwork combines thoughtful design, skilled hands, and an uncompromising attention to detail. From custom furniture to carefully restored pieces, we create practical, lasting solutions that feel personal to every home."
+            eyebrow="درباره ما"
+            title="با دقت ساخته شده. ماندگار."
+            intro="در وودکرفترز باور داریم چوب‌کاری خوب، ترکیبی از طراحی سنجیده، دستان ماهر و توجهی بی‌قیدوشرط به جزئیات است. از مبلمان سفارشی تا قطعاتی که با دقت مرمت می‌شوند، راهکارهایی کاربردی و ماندگار می‌سازیم که برای هر خانه شخصی به نظر می‌رسد."
           />
 
           <ul className="mt-8 space-y-3.5">
@@ -38,15 +38,15 @@ export default function About() {
           </ul>
 
           <Button as="a" href="#process" variant="dark" className="mt-8">
-            Meet Our Approach
-            <Icon name="arrow-right" size={18} />
+            با روش کار ما آشنا شوید
+            <Icon name="arrow-right" size={18} className="icon-flip" />
           </Button>
         </Reveal>
 
         <Reveal className="order-1 lg:order-2" delay={120}>
           <Photo
             id={7484154}
-            alt="Two makers examining a piece of timber together in the workshop"
+            alt="دو استادکار در حال بررسی قطعه‌ای چوب در کارگاه"
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="aspect-[4/3] w-full rounded-card object-cover shadow-card lg:aspect-[5/6]"
           />
