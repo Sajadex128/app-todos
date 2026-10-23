@@ -10,6 +10,7 @@ import FinalCta from "./components/sections/FinalCta";
 import Hero from "./components/sections/Hero";
 import Portfolio from "./components/sections/Portfolio";
 import ProcessSteps from "./components/sections/ProcessSteps";
+import ScrollVideo from "./components/sections/ScrollVideo";
 import Services from "./components/sections/Services";
 import Testimonials from "./components/sections/Testimonials";
 import WhyChooseUs from "./components/sections/WhyChooseUs";
@@ -30,6 +31,7 @@ export default function App() {
       <main id="main">
         <Hero />
         <FeatureCards />
+        <ScrollVideo />
         <Services />
         <WoodBanner />
         <About />
