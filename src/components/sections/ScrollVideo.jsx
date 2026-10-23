@@ -2,13 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import Photo from "../ui/Photo";
 
 /**
- * ScrollVideo — the workshop film scrubbed by the visitor's scroll.
+ * ScrollVideo — the workshop film as a scroll-scrubbed backdrop.
  *
- * The section is 300vh tall with a 100vh stage pinned (sticky) inside it, so
- * the page holds the film for two extra screens of scrolling. Progress across
- * that pinned stretch maps straight onto the film's timeline: the scroll
- * position is the playhead. The film never autoplays, never loops, never plays
- * sound — it only moves when the page does.
+ * Renders a 300vh band holding a 100vh stage pinned (sticky) inside it, with
+ * the film covering that stage. Progress across the pinned stretch maps
+ * straight onto the film's timeline: the scroll position is the playhead. The
+ * film never autoplays, never loops and never plays sound — it only moves when
+ * the page does.
+ *
+ * Whatever is passed as `children` sits on top of the film and dissolves once
+ * the film has started to travel (FADE_START → FADE_END), which is what clears
+ * the opening headline out of the frame; scrolling back up brings it back.
  *
  * Seeking is the expensive part of scrub-video, and this film is encoded as a
  * single GOP (one keyframe at the start), so every jump backwards makes the
@@ -20,9 +24,8 @@ import Photo from "../ui/Photo";
  *   (SEEK_MIN_GAP), so a wheel gesture cannot thrash the decoder,
  * - runs no animation frame at all while the film is at rest.
  *
- * The film carries nothing a screen reader needs, so the band is hidden from
- * assistive tech. `prefers-reduced-motion` and a failed load each fall back to
- * a single still instead of a scrubbing timeline.
+ * `prefers-reduced-motion` and a failed load each fall back to a still frame
+ * and a normal-height band, with the overlay left fully visible.
  */
 
 const SRC = "/media/workshop-scroll.mp4";
@@ -32,6 +35,10 @@ const FALLBACK_PHOTO = 5095285;
 
 const SEEK_MIN_STEP = 0.01; // seconds — below this a seek is not worth starting
 const SEEK_MIN_GAP = 40; // ms between seeks — a gesture must not thrash the decoder
+
+/* The overlay holds while the film starts to travel, then dissolves. */
+const FADE_START = 0.05;
+const FADE_END = 0.2;
 
 /** Tracks the visitor's reduced-motion preference, including later changes. */
 function usePrefersReducedMotion() {
@@ -53,10 +60,11 @@ function usePrefersReducedMotion() {
   return reduced;
 }
 
-export default function ScrollVideo() {
+export default function ScrollVideo({ children }) {
   const reducedMotion = usePrefersReducedMotion();
   const sectionRef = useRef(null);
   const stageRef = useRef(null);
+  const overlayRef = useRef(null);
   const videoRef = useRef(null);
   const [status, setStatus] = useState("loading"); // loading | ready | failed
 
@@ -69,24 +77,42 @@ export default function ScrollVideo() {
 
     const section = sectionRef.current;
     const stage = stageRef.current;
+    const overlay = overlayRef.current;
     const video = videoRef.current;
-    if (!section || !stage || !video) return undefined;
+    if (!section || !stage || !overlay || !video) return undefined;
 
     let frame = 0; // pending animation frame
     let targetTime = 0; // seconds the scroll position asks for
     let requested = 0; // seconds of the last seek we started
     let lastSeek = 0;
+    let lastOpacity = 1;
 
-    /** Film time for the current scroll position: 0 at the pin, end when it ends. */
-    const readTarget = () => {
-      const duration = video.duration;
+    /** 0 when the stage pins, 1 once the whole section has scrolled past. */
+    const readProgress = () => {
       // The pinned travel is exactly what is left over: section minus stage.
       const travel = section.offsetHeight - stage.offsetHeight;
-      if (!Number.isFinite(duration) || duration <= 0 || travel <= 0) return 0;
+      if (travel <= 0) return 0;
       const progress = -section.getBoundingClientRect().top / travel;
-      const clamped = progress < 0 ? 0 : progress > 1 ? 1 : progress;
-      // Stay just short of the very end: a seek onto the end can stall.
-      return Math.min(clamped * duration, Math.max(duration - 0.05, 0));
+      return progress < 0 ? 0 : progress > 1 ? 1 : progress;
+    };
+
+    /** Dissolves the overlay as the film travels in; reversed on the way up. */
+    const applyFade = (progress) => {
+      const span = FADE_END - FADE_START;
+      const travelled = span > 0 ? (progress - FADE_START) / span : 1;
+      const eased =
+        travelled <= 0
+          ? 0
+          : travelled >= 1
+            ? 1
+            : travelled * travelled * (3 - 2 * travelled);
+      const opacity = 1 - eased;
+      if (opacity === lastOpacity) return;
+      if (opacity !== 0 && Math.abs(opacity - lastOpacity) < 0.01) return;
+      lastOpacity = opacity;
+      overlay.style.opacity = String(opacity);
+      // Dissolved for good: invisible copy must not hold focus or clicks.
+      overlay.style.visibility = opacity === 0 ? "hidden" : "";
     };
 
     function draw() {
@@ -110,8 +136,15 @@ export default function ScrollVideo() {
     };
 
     const onScroll = () => {
-      targetTime = readTarget();
-      // While a seek is running, `seeked` picks the newest position up again.
+      const progress = readProgress();
+      const duration = video.duration;
+      targetTime =
+        Number.isFinite(duration) && duration > 0
+          ? // Stay just short of the very end: a seek onto the end can stall.
+            Math.min(progress * duration, Math.max(duration - 0.05, 0))
+          : 0;
+      // The overlay keeps up with the scroll even while a seek is in flight.
+      applyFade(progress);
       if (!video.seeking) schedule();
     };
 
@@ -130,6 +163,9 @@ export default function ScrollVideo() {
       video.removeEventListener("seeked", schedule);
       video.removeEventListener("loadeddata", onScroll);
       video.removeEventListener("canplay", onScroll);
+      // Leaving the overlay dissolved would hide the copy it wraps.
+      overlay.style.opacity = "";
+      overlay.style.visibility = "";
     };
   }, [scrubbing]);
 
@@ -137,11 +173,7 @@ export default function ScrollVideo() {
   const heightClass = still ? "h-screen" : "h-[300vh]";
 
   return (
-    <div
-      ref={sectionRef}
-      aria-hidden="true"
-      className={`relative bg-walnut ${heightClass}`}
-    >
+    <div ref={sectionRef} className={`relative bg-walnut ${heightClass}`}>
       <div
         ref={stageRef}
         className="sticky top-0 h-screen overflow-hidden bg-walnut"
@@ -163,11 +195,19 @@ export default function ScrollVideo() {
             playsInline
             disablePictureInPicture
             tabIndex={-1}
+            aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover object-center"
             onLoadedMetadata={() => setStatus("ready")}
             onError={() => setStatus("failed")}
           />
         )}
+
+        <div
+          ref={overlayRef}
+          className="absolute inset-0 will-change-[opacity]"
+        >
+          {children}
+        </div>
       </div>
     </div>
   );
