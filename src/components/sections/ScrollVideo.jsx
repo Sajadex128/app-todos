@@ -20,8 +20,9 @@ import Photo from "../ui/Photo";
  * - seeks to the newest position only, never to intermediate ones nobody sees,
  * - keeps at most one seek in flight and waits for it (`seeked`) before pacing
  *   the next, so a seek is never restarted mid-decode,
- * - ignores sub-frame differences (SEEK_MIN_STEP) and rate-limits itself
- *   (SEEK_MIN_GAP), so a wheel gesture cannot thrash the decoder,
+ * - ignores sub-frame differences (SEEK_MIN_STEP) and issues at most one seek
+ *   per frame (SEEK_MIN_GAP), so it tracks the page closely without thrashing
+ *   the decoder,
  * - runs no animation frame at all while the film is at rest.
  *
  * `prefers-reduced-motion` and a failed load each fall back to a still frame
@@ -34,7 +35,14 @@ const SRC = "/media/workshop-scroll.mp4";
 const FALLBACK_PHOTO = 5095285;
 
 const SEEK_MIN_STEP = 0.01; // seconds — below this a seek is not worth starting
-const SEEK_MIN_GAP = 40; // ms between seeks — a gesture must not thrash the decoder
+/*
+ * At most one seek per frame. A measured ordinary scroll step costs the
+ * decoder ~20 ms with this film, so letting the playhead move every frame
+ * keeps it as close to the page as the film itself allows; the
+ * one-seek-in-flight rule in the loop is what protects the decoder during a
+ * fast flick.
+ */
+const SEEK_MIN_GAP = 16; // ms between seeks
 
 /* The overlay holds while the film starts to travel, then dissolves. */
 const FADE_START = 0.05;
