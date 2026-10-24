@@ -34,6 +34,15 @@ const SRC = "/media/workshop-scroll.mp4";
 /** Still shown if the film cannot be loaded (workbench with hand tools). */
 const FALLBACK_PHOTO = 5095285;
 
+/*
+ * The film opens on a fade from black: measured, the first ~1.4 s are a solid
+ * black rectangle and the picture only settles from about 1.5 s on. Mapping
+ * the scroll from 0 would therefore open the site on an empty hero, so the
+ * scrub starts at the first frame that actually carries the picture and still
+ * runs through to the film's final frame.
+ */
+const FILM_START = 1.5; // seconds
+
 const SEEK_MIN_STEP = 0.01; // seconds — below this a seek is not worth starting
 /*
  * At most one seek per frame. A measured ordinary scroll step costs the
@@ -146,11 +155,14 @@ export default function ScrollVideo({ children }) {
     const onScroll = () => {
       const progress = readProgress();
       const duration = video.duration;
-      targetTime =
-        Number.isFinite(duration) && duration > 0
-          ? // Stay just short of the very end: a seek onto the end can stall.
-            Math.min(progress * duration, Math.max(duration - 0.05, 0))
-          : 0;
+      if (Number.isFinite(duration) && duration > 0) {
+        // Stay just short of the very end: a seek onto the end can stall.
+        const end = Math.max(duration - 0.05, 0);
+        const start = Math.min(FILM_START, end);
+        targetTime = start + progress * (end - start);
+      } else {
+        targetTime = 0;
+      }
       // The overlay keeps up with the scroll even while a seek is in flight.
       applyFade(progress);
       if (!video.seeking) schedule();
